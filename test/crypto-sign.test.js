@@ -14,7 +14,7 @@ describe('crypto microservice', function() {
     seneca.ready(done)
   })
 
-  it('default sign/verify', function(done) {
+  it('default behaviour', function(done) {
 
     var crypto = seneca.pin({role: 'crypto-sign', cmd: '*'})
 
@@ -24,6 +24,43 @@ describe('crypto microservice', function() {
       }
 
       crypto.verify({data: signedData}, function(err, verified) {
+
+        if(err) {
+          return done(err)
+        }
+
+        assert.ok(verified)
+
+        signedData.payload.altered = true
+        crypto.verify({data: signedData}, function(err, verified) {
+
+          if(err) {
+            return done(err)
+          }
+
+          assert.ok(!verified)
+          done()
+
+        })
+
+      })
+
+    })
+
+  })
+
+  it('transient key', function(done) {
+
+    var crypto = seneca.pin({role: 'crypto-sign', cmd: '*'})
+
+    var key = Date.now() + ''
+
+    crypto.sign({data: {foo: 'bar'}, key: key}, function(err, signedData) {
+      if(err) {
+        return done(err)
+      }
+
+      crypto.verify({data: signedData, key: key}, function(err, verified) {
 
         if(err) {
           return done(err)
