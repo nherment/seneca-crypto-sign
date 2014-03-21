@@ -1,0 +1,36 @@
+{
+  "name": "seneca-crypto-sign",
+  "version": "0.1.0",
+  "description": "microservice for signing information (both HMAC and pub/priv key signing)",
+  "main": "crypto-sign.js",
+  "scripts": {
+    "test": "mocha test --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nherment/seneca-crypto-sign.git"
+  },
+  "keywords": [
+    "seneca",
+    "auth",
+    "crypto",
+    "hmac",
+    "token",
+    "signing",
+    "sign",
+    "key"
+  ],
+  "author": "Nicolas Herment <nherment@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nherment/seneca-crypto-sign/issues"
+  },
+  "homepage": "https://github.com/nherment/seneca-crypto-sign",
+  "dependencies": {
+    "underscore": "1.6.0",
+    "ursa": "^0.8.0"
+  },
+  "devDependencies": {
+    "mocha": "1.18.2"
+  }
+}
