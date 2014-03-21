@@ -1,4 +1,6 @@
 
+[![Build Status](https://api.travis-ci.org/nherment/seneca-crypto-sign.png?branch=master)](https://travis-ci.org/nherment/seneca-crypto-sign)
+
 seneca plugin to sign objects
 
 ### install
