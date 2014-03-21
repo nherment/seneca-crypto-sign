@@ -2,21 +2,35 @@
 
 var assert = require('assert')
 
-var Sign = require('../lib/Sign.js')
+var Rsa = require('../lib/Rsa.js')
 
-describe('Sign', function() {
+describe('Rsa', function() {
 
 
   it('sign', function() {
 
-    var sign = new Sign()
+    var rsa = new Rsa({length: 512}) // make the test faster
 
     var key = Date.now()
 
-    var signed = sign.sign({'foo': 'bar'})
-    console.log(signed)
-    assert.ok(sign.verify(signed))
+    var signed = rsa.sign({'foo': 'bar'})
 
+    assert.ok(rsa.verify(signed))
+
+  })
+
+
+  it('cannot corrupt data', function() {
+
+    var rsa = new Rsa({length: 512}) // make the test faster
+
+    var key = Date.now()
+
+    var signed = rsa.sign({'foo': 'bar'})
+
+    signed.payload.foo = 'bar2'
+
+    assert.ok(!rsa.verify(signed))
 
   })
 

@@ -22,6 +22,20 @@ describe('Hmac', function() {
 
   })
 
+  it('cannot corrupt data', function() {
+
+    var hmac = new Hmac()
+
+    var key = Date.now()
+
+    var signed = hmac.sign(key, {'foo': 'bar'})
+
+    signed.payload.bar = 'foo'
+
+    assert.ok(!hmac.verify(key, signed))
+
+  })
+
 
 
 })
