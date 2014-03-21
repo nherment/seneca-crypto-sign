@@ -137,7 +137,13 @@ describe('crypto microservice', function() {
 
     var crypto = seneca.pin({role: 'crypto-sign', cmd: '*'})
 
-    crypto.configure({name: 'foobar', pem: fs.readFileSync(home + '/.ssh/id_rsa'), type: 'rsa', length: 512}, function(err) {
+    try {
+      var pem = fs.readFileSync(home + '/.ssh/id_rsa')
+    } catch(err) {
+
+    }
+
+    crypto.configure({name: 'foobar', pem: pem, type: 'rsa', length: 512}, function(err) {
       if(err) {
         return done(err)
       }
