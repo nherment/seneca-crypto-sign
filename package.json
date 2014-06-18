@@ -1,6 +1,6 @@
 {
   "name": "seneca-crypto-sign",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "microservice for signing information (both HMAC and pub/priv key signing)",
   "main": "crypto-sign.js",
   "scripts": {
@@ -31,10 +31,10 @@
     "ursa": "0.8.0"
   },
   "peerDependencies": {
-    "seneca": "0.5.15"
+    "seneca": "*"
   },
   "devDependencies": {
-    "seneca": "0.5.15",
-    "mocha": "1.18.2"
+    "seneca": "*",
+    "mocha": "*"
   }
 }
