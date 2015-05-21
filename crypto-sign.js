@@ -32,7 +32,7 @@ module.exports = function (options) {
         registerHmacSigner(args.name, args.key || options.key, args.algorithm)
         break
       case 'rsa':
-        registerRsaSigner(args.name, args.key || options.key, args.algorithm, args.length)
+        registerRsaSigner(args.name, args.pem, args.key || options.key, args.algorithm, args.length)
         break
     }
 
