@@ -4,6 +4,7 @@ var seneca = require('seneca')({strict: {
   result: false
 }})
 var fs = require('fs')
+var path = require('path');
 
 seneca.use( require('../crypto-sign.js') )
 
@@ -140,7 +141,7 @@ describe('crypto microservice', function() {
     var crypto = seneca.pin({role: 'crypto-sign', cmd: '*'})
 
     try {
-      var pem = fs.readFileSync(home + '/.ssh/id_rsa')
+      var pem = fs.readFileSync(path.join(__dirname, 'data', 'id_rsa'))
     } catch(err) {
 
     }
