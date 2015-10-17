@@ -1,7 +1,9 @@
 var assert = require('assert')
-var seneca = require('seneca')()
+var seneca = require('seneca')({strict: {
+  // allow seneca act results other than plain object
+  result: false
+}})
 var fs = require('fs')
-var path = require('path')
 
 seneca.use( require('../crypto-sign.js') )
 
